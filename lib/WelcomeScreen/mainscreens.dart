@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:parkshare/Screens/Barrier/barrier.dart';
+import 'package:parkshare/Screens/Settings/settings.dart';
 import 'package:parkshare/constans.dart';
-import 'package:parkshare/Screens/Home/home.dart';
+import 'package:parkshare/Screens/User/user.dart';
 
 class Mainscreen extends StatefulWidget {
   const Mainscreen ({Key ? key}) : super (key: key);
@@ -23,7 +25,9 @@ class _MainScreenState extends State<Mainscreen> {
       body: IndexedStack(
         index: selecteindex,
         children: [
-
+          User(),
+          Settings(),
+          Barrier(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 const kbucolor = Color(0xffff0000);
-const secondcolor = Color(0xff2935dc);
+const secondcolor = Color(0xfffdf9f9);
 const textcolor = Color(0xff171817);
-const kprimarycolor = Color(0xffabbcdc);
+const kprimarycolor = Color(0xff67676c);
 
 const textstylesensors = TextStyle(
   color: textcolor,

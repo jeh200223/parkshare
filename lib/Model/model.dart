@@ -1,27 +1,30 @@
-class Model {
-  final String id;
-  final String car_value;
-  final String barrier_value;
-  final String temp_value;
-  final String humi_value;
+class DataModel {
+  final int id;
+  final String appCode;
+  final int carValue;
+  final String barrierValue;
+  final double tempValue;
+  final double humiValue;
   final String uptime;
 
-  Model({
+  DataModel({
     required this.id,
-    required this.car_value,
-    required this.barrier_value,
-    required this.temp_value,
-    required this.humi_value,
+    required this.appCode,
+    required this.carValue,
+    required this.barrierValue,
+    required this.tempValue,
+    required this.humiValue,
     required this.uptime,
   });
 
-  factory Model.fromJson(Map<String, dynamic> json) {
-    return Model(
+  factory DataModel.fromJson(Map<String, dynamic> json) {
+    return DataModel(
       id: json['id'],
-      car_value: json['car_value'],
-      barrier_value: json['barrier_value'],
-      temp_value: json['temp_value'],
-      humi_value: json['humi_value'],
+      appCode: json['app_code'],
+      carValue: json['car_value'],
+      barrierValue: json['barrier_value'],
+      tempValue: json['temp_value'],
+      humiValue: json['humi_value'],
       uptime: json['uptime'],
     );
   }

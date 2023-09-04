@@ -33,7 +33,7 @@ class header extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  child: Image.asset('assets/images/kyngbook.png', height: screenWidth < 900 ? 50 : 100),
+                  child: Image.asset('images/kyngbook.png', height: screenWidth < 900 ? 50 : 100),
                 )
               ],
             ),

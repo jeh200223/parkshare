@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parkshare/Screens/Settings/Components/controller.dart';
 import 'package:parkshare/components/temphumi.dart';
 import 'package:parkshare/constans.dart';
 
@@ -31,8 +32,10 @@ class _bodyState extends State<body>{
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
                   TemperatureUp(),
                   SizedBox(
-                    height: 30,
-                  ),
+                    height: 30,),
+                  Controller(),
+                  SizedBox(
+                    height: 30,),
                 ],
               ),
             ),

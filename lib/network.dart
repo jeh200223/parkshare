@@ -14,9 +14,7 @@ class NetworkSendData {
 }
 
 class Insert {
-  Future<dynamic> insertData(String manual, String barrier_control, String kinds, int barrier_value) async {
-    String kind = kinds;
-    int barrie_values = barrier_value;
+  Future<dynamic> insertData(String manual, String barrier_control) async {
 
     // URL 변경
     final Uri uri = Uri.parse(
@@ -28,8 +26,8 @@ class Insert {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: <String, dynamic>{
-        "manual": kind,
-        "barrier_control": barrie_values.toString(),
+        "manual": manual,
+        "barrier_control": barrier_control,
       },
     );
 

@@ -29,8 +29,8 @@ class _ControllerState extends State<Controller> {
         child: Column(
           children: <Widget>[
             Controllerwidget(
-              icon: Icon(Icons.ac_unit, color: kprimarycolor, size: screenWidth < 900 ? 40 : 70),
-              text: '팬',
+              icon: Icon(CupertinoIcons.shield, color: kprimarycolor, size: screenWidth < 900 ? 40 : 70),
+              text: '차수막',
               widget: Customswitch(
                 initialvalue: _checked_barrier == 1,
                 onchanged: (value) {
@@ -43,32 +43,25 @@ class _ControllerState extends State<Controller> {
             ElevatedButton(
               onPressed: () async {
                 final Insert networking = Insert();
-                final String manual = '수동'; // URL 파라미터 값
-                final String barrier_control = "1"; // URL 파라미터 값
-                final String kinds = '자동'; // 웹 서버로 보낼 정보
-                final int barrier_value = _checked_barrier;
-                // 정수를 문자열로 변환
+                final String manual = '자동';
+
+                _checked_barrier = _checked_barrier == 0 ? 1 : 0;
+                final int barrier_control = _checked_barrier;
 
                 // 필요한 파라미터를 URL 파라미터와 JSON 데이터로 생성
                 final Map<String, dynamic> data = {
                   "manual": manual,
-                  "barrier_control": barrier_control, // 문자열로 변환
-                  "kinds": kinds,
-                  "barrier_value": barrier_value,
+                  "barrier_control": barrier_control,
                 };
                 try {
                   // insertData 함수를 호출하고 네 개의 인수를 전달
-                  final dynamic response = await networking.insertData(manual, barrier_control, kinds, barrier_value);
+                  final dynamic response = await networking.insertData(manual, barrier_control.toString());
                   // 서버 응답에 따라 필요한 작업 수행
                   if (response is String) {
                     // 서버에서 문자열 형태로 응답한 경우
                     // 응답 데이터 사용 또는 처리
                     print("데이터 전송 성공: $response");
-                  } else if (response is int) {
-                    // 서버에서 정수 형태로 응답한 경우
-                    // 응답 데이터 사용 또는 처리
-                    print("데이터 전송 성공: $response");
-                  } else {
+                  }  else {
                     // 다른 데이터 형식일 경우 처리
                     print("데이터 형식 오류: $response");
                   }

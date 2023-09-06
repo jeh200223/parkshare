@@ -14,12 +14,14 @@ class NetworkSendData {
 }
 
 class Insert {
-  Future<List<Map<String, dynamic>>> insertData(String manual, int barrier_control, String kinds, int barrier_value) async {
+  Future<dynamic> insertData(String manual, String barrier_control, String kinds, int barrier_value) async {
     String kind = kinds;
     int barrie_values = barrier_value;
 
+    // URL 변경
     final Uri uri = Uri.parse(
         'http://capstone.dothome.co.kr/app_wemos.php?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
+
     final response = await http.post(
       uri,
       headers: <String, String>{
@@ -27,7 +29,7 @@ class Insert {
       },
       body: <String, dynamic>{
         "manual": kind,
-        "barrier_control": barrie_values,
+        "barrier_control": barrie_values.toString(),
       },
     );
 
@@ -39,10 +41,11 @@ class Insert {
     }
   }
 
+
   Future<List<Map<String, dynamic>>> insertData_auto(String manual) async {
     String menu = manual;
 
-    final Uri uri = Uri.parse('http://capstone.dothome.co.kr/wemos_app.php?mode=insert&manual=${manual}');
+    final Uri uri = Uri.parse('http://capstone.dothome.co.kr/app_wemos.php?mode=insert&manual=${manual}');
     print(uri);
     final response = await http.post(
       uri,

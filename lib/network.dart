@@ -14,20 +14,20 @@ class NetworkSendData {
 }
 
 class Insert {
-  Future<List<Map<String, dynamic>>> insertData(String manual, bool barrier_control) async {
-    String menu = manual;
-    int barrie_value = toint(barrier_control);
+  Future<List<Map<String, dynamic>>> insertData(String manual, int barrier_control, String kinds, int barrier_value) async {
+    String kind = kinds;
+    int barrie_values = barrier_value;
 
     final Uri uri = Uri.parse(
-        'http://capstone.dothome.co.kr/wemos_app.php?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
+        'http://capstone.dothome.co.kr/app_wemos.php?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
     final response = await http.post(
       uri,
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: <String, dynamic>{
-        "manual": menu,
-        "barrier_control": barrie_value,
+        "manual": kind,
+        "barrier_control": barrie_values,
       },
     );
 

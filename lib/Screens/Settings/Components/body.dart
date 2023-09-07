@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:parkshare/Screens/Settings/Components/controller.dart';
+import 'package:parkshare/Screens/Settings/Components/manualcontrol.dart';
+import 'package:parkshare/Screens/Settings/Components/powercontrol.dart';
 import 'package:parkshare/components/temphumi.dart';
 import 'package:parkshare/constans.dart';
 
@@ -33,9 +34,22 @@ class _bodyState extends State<body>{
                   TemperatureUp(),
                   SizedBox(
                     height: 30,),
-                  Controller(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ManualControl(),
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Expanded(
+                        child: PowerControl(),
+                      ),
+                    ],
+                  ),
                   SizedBox(
-                    height: 30,),
+                    height: 30,
+                  ),
                 ],
               ),
             ),

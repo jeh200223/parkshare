@@ -40,14 +40,16 @@ class _ManualControl extends State<ManualControl> {
                       _checked_manual = value ? "수동" : "자동";
                     });
                     final Insert networking = Insert();
+                    final int barrier_control = 0;
                     _checked_manual = _checked_manual == "수동" ? "자동" : "수동";
                     final String manual_control = _checked_manual;
 
                     // 필요한 파라미터를 URL 파라미터와 JSON 데이터로 생성
                     final Map<String, dynamic> data = {
                       "manual": manual_control,
+                      "barrier_control": barrier_control.toString(),
                     };
-                    networking.insertData_auto(manual_control);
+                    networking.insertData_auto(manual_control, barrier_control.toString());
                   },
                 ), isSwitched: _checked_manual == "수동" ? false : true,
               ),

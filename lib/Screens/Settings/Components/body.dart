@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:parkshare/Screens/Settings/Components/manualcontrol.dart';
 import 'package:parkshare/Screens/Settings/Components/powercontrol.dart';
-import 'package:parkshare/components/temphumi.dart';
 import 'package:parkshare/constans.dart';
+import '../../../Components/temphumi.dart';
 
 class body extends StatefulWidget {
   const body ({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _bodyState extends State<body>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
-                  TemperatureUp(),
+                  Temperature(),
                   SizedBox(
                     height: 30,),
                   Row(

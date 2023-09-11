@@ -4,14 +4,14 @@ import 'package:parkshare/Components/DatasBorder.dart';
 import 'package:parkshare/constans.dart';
 import 'package:parkshare/network.dart';
 
-class TemperatureUp extends StatefulWidget {
-  const TemperatureUp({Key? key}) : super(key: key);
+class Temperature extends StatefulWidget {
+  const Temperature({Key? key}) : super(key: key);
 
   @override
-  State<TemperatureUp> createState() => _TemperatureUpState();
+  State<Temperature> createState() => _TemperatureState();
 }
 
-class _TemperatureUpState extends State<TemperatureUp> {
+class _TemperatureState extends State<Temperature> {
   List<Map<String, dynamic>> _dataList = [];
 
   @override
@@ -22,7 +22,7 @@ class _TemperatureUpState extends State<TemperatureUp> {
 
   void getDatas() async {
     try {
-      List<Map<String, dynamic>> dataList = await NetworkSendData().getExampleData();
+      List<Map<String, dynamic>> dataList = await NetworkSendData().getAllData();
       setState(() {
         _dataList = dataList;
       });

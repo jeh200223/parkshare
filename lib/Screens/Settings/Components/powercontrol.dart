@@ -41,16 +41,11 @@ class _PowerControl extends State<PowerControl> {
                     _checked_barrier = value ? 1 : 0;
                   });
                     final Insert networking = Insert();
-                    final String manual = '수동';
+                    final String manual = 'manual';
 
                     _checked_barrier = _checked_barrier == 0 ? 0 : 1;
                     final int barrier_control = _checked_barrier;
 
-                    // 필요한 파라미터를 URL 파라미터와 JSON 데이터로 생성
-                    final Map<String, dynamic> data = {
-                      "manual": manual,
-                      "barrier_control": barrier_control,
-                    };
                     networking.insertData(manual, barrier_control.toString());
                 },
               ), isSwitched: _checked_barrier == 0 ? false : true,

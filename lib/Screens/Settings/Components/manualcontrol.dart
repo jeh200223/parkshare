@@ -14,7 +14,7 @@ class ManualControl extends StatefulWidget {
 
 class _ManualControl extends State<ManualControl> {
   List<Map<String, dynamic>> _dataList = [];
-  String _checked_manual = "수동"; // 초기값을 "수동"을 나타내는 0으로 설정
+  String _checked_manual = "manual"; // 초기값을 "수동"을 나타내는 0으로 설정
 
 
   @override
@@ -29,29 +29,24 @@ class _ManualControl extends State<ManualControl> {
           child: Column(
             children: [
               Controllerwidget(
-                icon: _checked_manual == "수동" ?
+                icon: _checked_manual == "manual" ?
                 Icon(CupertinoIcons.shield, color: kprimarycolor, size: screenWidth < 900 ? 40 : 70)
                 : Icon(CupertinoIcons.shield_fill, color: kprimarycolor, size: screenWidth < 900 ? 40 : 70),
-                text: _checked_manual == "수동" ? "자동" : "수동",
+                text: _checked_manual == "manual" ? "자동" : "수동",
                 widget: Customswitch(
-                  initialvalue: _checked_manual == "자동",
+                  initialvalue: _checked_manual == "auto",
                   onchanged: (value) {
                     setState(() {
-                      _checked_manual = value ? "수동" : "자동";
+                      _checked_manual = value ? "manual" : "auto";
                     });
                     final Insert networking = Insert();
                     final int barrier_control = 0;
-                    _checked_manual = _checked_manual == "수동" ? "자동" : "수동";
+                    _checked_manual = _checked_manual == "manual" ? "auto" : "manual";
                     final String manual_control = _checked_manual;
 
-                    // 필요한 파라미터를 URL 파라미터와 JSON 데이터로 생성
-                    final Map<String, dynamic> data = {
-                      "manual": manual_control,
-                      "barrier_control": barrier_control.toString(),
-                    };
                     networking.insertData_auto(manual_control, barrier_control.toString());
                   },
-                ), isSwitched: _checked_manual == "수동" ? false : true,
+                ), isSwitched: _checked_manual == "manual" ? false : true,
               ),
             ],
           )

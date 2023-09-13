@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:parkshare/Components/DatasBorder.dart';
@@ -17,6 +19,9 @@ class _TemperatureState extends State<Temperature> {
   @override
   void initState() {
     getDatas();
+    Timer.periodic(Duration(seconds: 10), (Timer t) {
+      getDatas(); // 30초마다 데이터 가져오기
+    });
     super.initState();
   }
 
@@ -26,6 +31,7 @@ class _TemperatureState extends State<Temperature> {
       setState(() {
         _dataList = dataList;
       });
+      print("datalist : $_dataList");
     } catch (e) {
       print(e);
     }
@@ -48,7 +54,7 @@ class _TemperatureState extends State<Temperature> {
         children: [
           DatasBorder(
             title: '실내온도',
-            textV: '${_dataList.isNotEmpty ? _dataList[0]['temp_value'] : 'N/A'}°C',
+            textV: '${_dataList.isNotEmpty  ? _dataList[0]['temp_value'] : 'N/A'}°C',
             icon: Icon(CupertinoIcons.thermometer,
                 color: kprimarycolor, size: 50),
           ),

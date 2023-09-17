@@ -8,19 +8,19 @@ import '../../../Components/temphumi.dart';
 import '../../../network.dart';
 
 class body extends StatefulWidget {
-  const body ({Key? key}) : super(key: key);
+  const body({Key? key}) : super(key: key);
 
   @override
   State<body> createState() => _bodyState();
 }
 
-class _bodyState extends State<body>{
+class _bodyState extends State<body> {
   List<Map<String, dynamic>> _dataList = [];
 
   @override
   void initState() {
     getDatas();
-    Timer.periodic(Duration(seconds: 10), (Timer t) {
+    Timer.periodic(const Duration(seconds: 10), (Timer t) {
       getDatas(); // 30초마다 데이터 가져오기
     });
     super.initState();
@@ -28,7 +28,8 @@ class _bodyState extends State<body>{
 
   void getDatas() async {
     try {
-      List<Map<String, dynamic>> dataList = await NetworkSendData().getBarrierData();
+      List<Map<String, dynamic>> dataList =
+          await NetworkSendData().getBarrierData();
       setState(() {
         _dataList = dataList;
       });
@@ -40,12 +41,13 @@ class _bodyState extends State<body>{
 
   @override
   Widget build(BuildContext context) {
-    final bool isAuto = _dataList.isNotEmpty && _dataList[0]['manual'] == "auto";
+    final bool isAuto =
+        _dataList.isNotEmpty && _dataList[0]['manual'] == "auto";
     final Size screenSize = MediaQuery.of(context).size;
     final double screenHeight = screenSize.height;
     final double screenWidth = screenSize.width;
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -57,21 +59,24 @@ class _bodyState extends State<body>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
-                  Temperature(),
-                  SizedBox(
-                    height: 30,),
+                  const Temperature(),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: ManualControl(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
                       Expanded(
-                        child: isAuto ? SizedBox() : PowerControl(), // isAuto가 true이면 PowerControl 숨김
+                        child: isAuto
+                            ? const SizedBox()
+                            : const PowerControl(), // isAuto가 true이면 PowerControl 숨김
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                     ],

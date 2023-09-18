@@ -59,13 +59,25 @@ class _bodyState extends State<body> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
-                  PercentDonut(percent: 0.8, color: Colors.black),
-                  SizedBox(height: 30,),
+                  const Center(
+                    child: SizedBox(
+                      width: 200,
+                      height: 200,
+                      child: PercentDonut(
+                        percent: 0.8,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   const Temperature(),
                   const SizedBox(
                     height: 30,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Expanded(
                         child: ManualControl(),

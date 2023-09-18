@@ -18,10 +18,20 @@ void sendDefaultData() async {
   networking.insertData(manual, barrierControl.toString());
 }
 
-bool state = false;
+bool screenState = false;
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +40,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: state ? const Mainscreen() : const LoginScreen(),
+      home: screenState
+          ? const Mainscreen()
+          : Scaffold(
+              body: loginScreen(),
+            ),
     );
   }
-}
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   TextEditingController controller1 = TextEditingController();
   TextEditingController controller2 = TextEditingController();
   TextEditingController controller3 = TextEditingController();
@@ -61,104 +66,108 @@ class _LoginScreenState extends State<LoginScreen> {
   FocusNode focusNode6 = FocusNode();
   FocusNode focusNode7 = FocusNode();
   FocusNode focusNode8 = FocusNode();
-// 나머지 텍스트 필드에 대해서도 동일하게 생성
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: SizedBox(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 60,
-              ),
-              const SizedBox(
-                child: header(),
-              ),
-              const Divider(),
-              SizedBox(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          const SizedBox(
-                            width: 30,
-                            child: Text(
-                              '-',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 20,
-                                height: 3,
-                              ),
+  Scaffold loginScreen() {
+    return Scaffold(
+      body: SizedBox(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 60,
+            ),
+            const SizedBox(
+              child: header(),
+            ),
+            const Divider(),
+            SizedBox(
+              child: Column(
+                children: [
+                  SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        const SizedBox(
+                          width: 30,
+                          child: Text(
+                            '-',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              height: 3,
                             ),
                           ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                          ),
-                          wLicensesTextField(
-                            context: context,
-                            state: true,
-                          ),
-                        ],
-                      ),
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                        ),
+                        wLicensesTextField(
+                          context: context,
+                          state: true,
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: Container(
                       width: 100,
-                      child: Container(
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.amber.shade100,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Center(
-                            child: Text(
-                              '인증',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(fontSize: 24, color: Colors.black),
-                            ),
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.amber.shade100,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          print(licensesBuffer);
+                          setState(() {
+                            if (licensesBuffer.toString() == '1f41il5z') {
+                              screenState = true;
+                            }
+                            print(screenState);
+                          });
+                        },
+                        child: const Center(
+                          child: Text(
+                            '인증',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 24, color: Colors.black),
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+StringBuffer licensesBuffer = StringBuffer();
 
 class wLicensesTextField extends StatefulWidget {
   final bool? state;
@@ -184,13 +193,20 @@ class _wLicensesTextFieldState extends State<wLicensesTextField> {
         inputFormatters: [
           LengthLimitingTextInputFormatter(1),
         ],
-        onChanged: (_) => setState(() {
-          if (widget.state!) {
-            FocusScope.of(context).unfocus();
-          } else {
-            FocusScope.of(context).nextFocus();
-          }
-        }),
+        onChanged: (_) => setState(
+          () {
+            if (licensesBuffer.length > 8) {
+              licensesBuffer.clear();
+            }
+            if (widget.state!) {
+              FocusScope.of(context).unfocus();
+              licensesBuffer.write(_);
+            } else {
+              FocusScope.of(context).nextFocus();
+              licensesBuffer.write(_);
+            }
+          },
+        ),
       ),
     );
   }

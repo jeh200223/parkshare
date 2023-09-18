@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:parkshare/Components/barrierget.dart';
 import 'package:parkshare/Screens/Settings/Components/manualcontrol.dart';
 import 'package:parkshare/Screens/Settings/Components/powercontrol.dart';
 import 'package:parkshare/constans.dart';
@@ -59,6 +59,8 @@ class _bodyState extends State<body> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
+                  PercentDonut(percent: 0.8, color: Colors.black),
+                  SizedBox(height: 30,),
                   const Temperature(),
                   const SizedBox(
                     height: 30,

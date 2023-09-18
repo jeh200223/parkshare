@@ -6,8 +6,6 @@ class DataModel {
   final double tempValue;
   final double humiValue;
   final String uptime;
-  final String manual;
-  final int barriercontrol;
 
   DataModel({
     required this.id,
@@ -17,8 +15,6 @@ class DataModel {
     required this.tempValue,
     required this.humiValue,
     required this.uptime,
-    required this.manual,
-    required this.barriercontrol,
   });
 
   factory DataModel.fromJson(Map<String, dynamic> json) {
@@ -30,8 +26,6 @@ class DataModel {
       tempValue: json['temp_value'],
       humiValue: json['humi_value'],
       uptime: json['uptime'],
-      manual: json['manual'],
-      barriercontrol: json['barrier_control'],
     );
   }
 }

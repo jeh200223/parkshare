@@ -59,7 +59,7 @@ class _bodyState extends State<body> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: screenWidth < 900 ? 20 : 80),
-                  PercentDonut(percent: 0.8, color: Colors.black),
+                  PercentDonut(percent: 8.0, color: Colors.black),
                   SizedBox(height: 30,),
                   const Temperature(),
                   const SizedBox(

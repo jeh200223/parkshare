@@ -21,7 +21,7 @@ class header extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('스마트차수막',
+                Text('수해방지플랫폼',
                     style: screenWidth < 900 ? kheadertitlemobile : kheadertitletablet
                 ),
                 Text('환영합니다', style: TextStyle(color: kprimarycolor, fontSize: 20),)

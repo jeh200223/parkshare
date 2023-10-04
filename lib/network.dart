@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+final String baseUrl = 'http://capstone.dothome.co.kr/wemos_app.php';
+final String barrierUrl = 'http://capstone.dothome.co.kr/app_wemos.php';
 class NetworkSendData {
   Future<List<Map<String, dynamic>>> getAllData() async {
-    final response = await http.get(Uri.parse('http://capstone.dothome.co.kr/wemos_app.php?mode=select'));
+    final response = await http.get(Uri.parse('$baseUrl?mode=select'));
 
     if (response.statusCode == 200) {
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
@@ -13,7 +15,7 @@ class NetworkSendData {
   }
 
   Future<List<Map<String, dynamic>>> getBarrierData() async {
-    final response = await http.get(Uri.parse('http://capstone.dothome.co.kr/app_wemos.php?mode=select'));
+    final response = await http.get(Uri.parse('$barrierUrl?mode=select'));
 
     if (response.statusCode == 200) {
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
@@ -27,7 +29,7 @@ class Insert {
   Future<dynamic> insertData(String manual, String barrier_control) async {
     // URL 변경
     final Uri uri = Uri.parse(
-        'http://capstone.dothome.co.kr/app_wemos.php?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
+        '$barrierUrl?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
 
     final response = await http.post(
       uri,
@@ -54,7 +56,7 @@ class Insert {
     String menu = manual;
 
     final Uri uri = Uri.parse(
-        'http://capstone.dothome.co.kr/app_wemos.php?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
+        '$barrierUrl?mode=insert&manual=${manual}&barrier_control=${barrier_control}');
     print(uri);
     final response = await http.post(
       uri,

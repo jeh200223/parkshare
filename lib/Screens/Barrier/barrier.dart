@@ -23,7 +23,7 @@ class _BarrierState extends State<Barrier> {
               SizedBox(height: 10),
               header(),
               SizedBox(height: 10),
-              body()
+              Body(),
             ],
           ),
         ),

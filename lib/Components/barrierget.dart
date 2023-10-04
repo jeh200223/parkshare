@@ -30,7 +30,7 @@ class _BarrierState extends State<Barrierget> with TickerProviderStateMixin {
     });
     setState(() {
       percentage = newPercentage;
-      newPercentage = 0.8;
+      newPercentage = 0.0;
       percentageAnimation.forward();
     });
   }
@@ -103,7 +103,7 @@ class PercentDonutPaint extends CustomPainter{
     double arcAngle = 2 * pi * percentage;
     paint.color = activeColor;
     canvas.drawArc(Rect.fromCircle(center: center, radius: radius), -pi / 2, arcAngle, false, paint);
-    drawText(canvas, size, "${(percentage * 100).round()} / 100");
+    drawText(canvas, size, "${(percentage ).round()} %");
   }
 
   void drawText(Canvas canvas, Size size, String text) {

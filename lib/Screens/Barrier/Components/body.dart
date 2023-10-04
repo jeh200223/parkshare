@@ -1,15 +1,33 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class body extends StatefulWidget {
-  const body({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
 
   @override
-  State createState() => _BodyState();
+  _BodyState createState() => _BodyState();
 }
 
-class _BodyState extends State<body> {
+class _BodyState extends State<Body> {
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  final _controller = Completer<GoogleMapController>();
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: GoogleMap(
+        mapType: MapType.hybrid,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
+    );
   }
 }

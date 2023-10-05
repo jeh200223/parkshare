@@ -25,9 +25,9 @@ class _MainScreenState extends State<Mainscreen> {
       body: IndexedStack(
         index: selecteindex,
         children: const [
-          User(),
-          Settings(),
           Barrier(),
+          Settings(),
+          User(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -39,16 +39,16 @@ class _MainScreenState extends State<Mainscreen> {
         onTap: onTaped,
         items: [
           BottomNavigationBarItem(
-              label: '유저',
-              icon: Icon(CupertinoIcons.person,
+              label: '차수막',
+              icon: Icon(CupertinoIcons.shield_lefthalf_fill,
                   size: screenwidth < 900 ? 30.0 : 40.0)),
           BottomNavigationBarItem(
               label: '설정',
               icon: Icon(CupertinoIcons.gear,
                   size: screenwidth < 900 ? 30.0 : 40.0)),
           BottomNavigationBarItem(
-              label: '차수막',
-              icon: Icon(CupertinoIcons.shield_lefthalf_fill,
+              label: '유저',
+              icon: Icon(CupertinoIcons.person,
                   size: screenwidth < 900 ? 30.0 : 40.0)),
         ],
       ),

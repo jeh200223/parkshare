@@ -10,6 +10,8 @@ class body extends StatefulWidget {
 class _BodyState extends State<body> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(),
+    );
   }
 }

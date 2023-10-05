@@ -18,7 +18,7 @@ void sendDefaultData() async {
   networking.insertData(manual, barrierControl.toString());
 }
 
-bool screenState = false;
+bool screenState = true;
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -143,6 +143,15 @@ class _MyAppState extends State<MyApp> {
                           setState(() {
                             if (licensesBuffer.toString() == '1f41il5z') {
                               screenState = true;
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) => const AlertDialog(
+                                  title: Text('!경고!'),
+                                  content: Text(
+                                      '라이센스 키가 잘못되었습니다.\n다시 확인하시거나 담당자에게 문의하세요.'),
+                                ),
+                              );
                             }
                             print(screenState);
                           });

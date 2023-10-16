@@ -1,16 +1,9 @@
-# parkshare
+# ParkShare
 
-A new ParkShare project.
+경복대학교 캡스톤 경진대회의 프로젝트로 주차장 플랫폼다루고 있으며 초기버전이다.
 
-## Getting Started
+## 설명
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+이 프로젝트에서는 플러터와 서버의 연결과 같은 기능들을 구현하는것에 대해 집중하며
+개발하였고 UI제작에 관해서는 기능이 정상적으로 작동이 되는지를 확인하기 위해 간단하게
+제작하였다.
